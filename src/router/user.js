@@ -121,11 +121,13 @@ router.post(
     res.status(400).send({ error: err.message });
   }
 );
+
 router.delete('/users/me/avatar', auth, async (req, res) => {
   req.user.avatar = undefined;
   await req.user.save();
   res.send();
 });
+
 router.get('/users/:id/avatar', async (req, res) => {
   try {
     const user = await User.findById(req.params.id);
