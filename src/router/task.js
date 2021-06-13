@@ -3,7 +3,21 @@ const Task = require('../models/task');
 const auth = require('../middleware/auth');
 const router = new express.Router();
 
-router.post('/tasks', auth, async (req, res) => {
+router.post('', auth, async (req, res) => {
+  /**
+   * #swagger.tags = ["tasks"]
+   * #swagger.summary = '新增任務'
+   * #swagger.description = '新增代辦事項的任務'
+   */
+  /* #swagger.parameters['task'] = {
+               in: 'body',
+               required: true,
+               type: 'object',
+               schema: { $ref: "#/definitions/task" }
+      } */
+  /* #swagger.security = [{
+               "Bearer": []
+        }] */
   const task = new Task({
     ...req.body,
     owner: req.user._id,
@@ -18,7 +32,19 @@ router.post('/tasks', auth, async (req, res) => {
 //get /tasks?completed=true
 //get /tasks?limit=10&skip=0
 //get /tasks?sortBy=createdAt:desc
-router.get('/tasks', auth, async (req, res) => {
+router.get('', auth, async (req, res) => {
+  /**
+   * #swagger.tags = ["tasks"]
+   * #swagger.summary = '取得任務'
+   * #swagger.description = '取得此使用者所有代辦事項，並做出分頁及排序或篩選'
+   * #swagger.parameters['completed'] = {description: '是否完成-false',required: false}
+   * #swagger.parameters['limit'] = { description: '一次請求最多幾筆資料回傳-10',required: false }
+   * #swagger.parameters['skip'] = { description: '省略幾筆-0',required: false }
+   * #swagger.parameters['sortBy'] = { description: '依照什麼做排序-createdAt:desc',required: false }
+   */
+  /* #swagger.security = [{
+               "Bearer": []
+        }] */
   const match = {};
   const sort = {};
 
@@ -49,7 +75,15 @@ router.get('/tasks', auth, async (req, res) => {
   }
 });
 
-router.get('/tasks/:id', auth, async (req, res) => {
+router.get('/:id', auth, async (req, res) => {
+  /**
+   * #swagger.tags = ["tasks"]
+   * #swagger.summary = '取特定代辦事項'
+   * #swagger.description = '依照task-id取得特定的代辦事項資料'
+   */
+  /* #swagger.security = [{
+               "Bearer": []
+        }] */
   const _id = req.params.id;
   try {
     const task = await Task.findOne({ _id, owner: req.user._id });
@@ -62,7 +96,15 @@ router.get('/tasks/:id', auth, async (req, res) => {
   }
 });
 
-router.patch('/tasks/:id', auth, async (req, res) => {
+router.patch('/:id', auth, async (req, res) => {
+  /**
+   * #swagger.tags = ["tasks"]
+   * #swagger.summary = '取得特定代辦事項'
+   * #swagger.description = '依照task-id取得特定的代辦事項資料'
+   */
+  /* #swagger.security = [{
+               "Bearer": []
+        }] */
   const updates = Object.keys(req.body);
   const allowedUpdates = ['completed', 'description'];
   const isValiOperation = updates.every((update) =>
@@ -89,7 +131,15 @@ router.patch('/tasks/:id', auth, async (req, res) => {
   }
 });
 
-router.delete('/tasks/:id', auth, async (req, res) => {
+router.delete('/:id', auth, async (req, res) => {
+  /**
+   * #swagger.tags = ["tasks"]
+   * #swagger.summary = '刪除特定代辦事項'
+   * #swagger.description = '依照task-id取得特定的代辦事項資料'
+   */
+  /* #swagger.security = [{
+               "Bearer": []
+        }] */
   try {
     const task = await Task.findOneAndDelete({
       _id: req.params.id,
