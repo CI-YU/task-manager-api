@@ -1,7 +1,7 @@
 # todolist
 
 ## 專案目標
-透過todolist專案了解下列項目
+透過todolist專案了解下列項目，因使用免費的heroku空間，一段時間未使用會休眠，第一次進入會稍慢，之後就會恢復正常。
 - 使用jwt驗證
 - 使用jest做unit test
 - 部署 heroku
