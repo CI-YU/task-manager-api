@@ -7,9 +7,6 @@
 
 ## 成果
 
-[task-manager-api](https://billhuang-task-manager.herokuapp.com)
+[task-manager-api](https://billhuang-task-manager.herokuapp.com/api-docs)
 
 ## 操作範例
-
-還沒補 open api 文件
-/users
