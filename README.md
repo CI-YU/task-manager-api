@@ -10,9 +10,9 @@
 
 ## 成果
 
-[task-manager-api](https://billhuang-task-manager.herokuapp.com/api-docs)
+[專案連結](https://billhuang-task-manager.herokuapp.com/api-docs)
 
-![測試結果](https://user-images.githubusercontent.com/19286751/121813983-3b340d00-cca1-11eb-812d-55d1cf850ec9.png)
+<img width="282" height="282" alt="測試結果" src="https://user-images.githubusercontent.com/19286751/121813983-3b340d00-cca1-11eb-812d-55d1cf850ec9.png">
 
 ## 操作範例
 
